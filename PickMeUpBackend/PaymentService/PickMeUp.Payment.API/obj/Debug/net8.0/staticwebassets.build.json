@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "nqNP5rV/fL55GJ1kKVfW06zY3Fs0UHyxIQHjnKBcEj0=",
+  "Source": "PickMeUp.Payment.API",
+  "BasePath": "_content/PickMeUp.Payment.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

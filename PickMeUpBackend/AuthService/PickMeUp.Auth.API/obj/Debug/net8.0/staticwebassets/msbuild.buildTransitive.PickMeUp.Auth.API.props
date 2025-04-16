@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\PickMeUp.Auth.API.props" />
+</Project>

@@ -1,0 +1,15 @@
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\bin\Debug\net8.0\PickMeUp.Messaging.deps.json
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\bin\Debug\net8.0\PickMeUp.Messaging.dll
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\bin\Debug\net8.0\PickMeUp.Messaging.pdb
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\PickMeUp.Messaging.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\PickMeUp.Messaging.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\PickMeUp.Messaging.AssemblyInfo.cs
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\PickMeUp.Messaging.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\PickMeUp.Messaging.sourcelink.json
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\PickMeUp.Messaging.dll
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\refint\PickMeUp.Messaging.dll
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\PickMeUp.Messaging.pdb
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\ref\PickMeUp.Messaging.dll
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\bin\Debug\net8.0\PickMeUp.Messaging.runtimeconfig.json
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\PickMeUp.Messaging.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Messaging\obj\Debug\net8.0\PickMeUp.Messaging.genruntimeconfig.cache

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PickMeUp.Notification.API.props" />
+</Project>

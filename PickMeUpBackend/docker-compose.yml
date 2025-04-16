@@ -1,0 +1,78 @@
+version: '3.9'
+
+services:
+  pickmeup-user-api:
+    build:
+      context: .
+      dockerfile: UserService/PickMeUp.User.API/Dockerfile
+    ports:
+      - "5001:8080"
+    depends_on:
+      - db
+
+  pickmeup-auth-api:
+    build:
+      context: .
+      dockerfile: AuthService/PickMeUp.Auth.API/Dockerfile
+    ports:
+      - "5002:8080"
+    depends_on:
+      - db
+
+  pickmeup-driver-api:
+    build:
+      context: .
+      dockerfile: DriverService/PickMeUp.Driver.API/Dockerfile
+    ports:
+      - "5003:8080"
+    depends_on:
+      - db
+
+  pickmeup-ride-api:
+    build:
+      context: .
+      dockerfile: RideService/PickMeUp.Ride.API/Dockerfile
+    ports:
+      - "5004:8080"
+    depends_on:
+      - db
+
+  pickmeup-payment-api:
+    build:
+      context: .
+      dockerfile: PaymentService/PickMeUp.Payment.API/Dockerfile
+    ports:
+      - "5005:8080"
+    depends_on:
+      - db
+
+  pickmeup-rating-api:
+    build:
+      context: .
+      dockerfile: RatingService/PickMeUp.Rating.API/Dockerfile
+    ports:
+      - "5006:8080"
+    depends_on:
+      - db
+
+  pickmeup-notification-api:
+    build:
+      context: .
+      dockerfile: NotificationService/PickMeUp.Notification.API/Dockerfile
+    ports:
+      - "5007:8080"
+    depends_on:
+      - db
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "QWElkj132!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlvolume:/var/opt/mssql
+
+volumes:
+  sqlvolume:

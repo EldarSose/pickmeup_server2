@@ -1,0 +1,15 @@
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\bin\Debug\net8.0\PickMeUp.Core.deps.json
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\bin\Debug\net8.0\PickMeUp.Core.dll
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\bin\Debug\net8.0\PickMeUp.Core.pdb
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\PickMeUp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\PickMeUp.Core.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\PickMeUp.Core.AssemblyInfo.cs
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\PickMeUp.Core.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\PickMeUp.Core.sourcelink.json
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\PickMeUp.Core.dll
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\refint\PickMeUp.Core.dll
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\PickMeUp.Core.pdb
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\ref\PickMeUp.Core.dll
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\bin\Debug\net8.0\PickMeUp.Core.runtimeconfig.json
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\PickMeUp.Core.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\PickMeUp.Core\obj\Debug\net8.0\PickMeUp.Core.genruntimeconfig.cache

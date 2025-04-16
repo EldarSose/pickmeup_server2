@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zxCDaxMwMECrbw0m2Z1wUXcPPPOKPCD8W3XW3G1g6oI=",
+  "Source": "PickMeUp.Notification.API",
+  "BasePath": "_content/PickMeUp.Notification.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
