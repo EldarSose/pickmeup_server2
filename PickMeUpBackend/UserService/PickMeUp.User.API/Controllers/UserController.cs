@@ -54,5 +54,12 @@ namespace PickMeUp.User.API.Controllers
 				var session = await _userService.GetSessionAsync(userId, deviceId);
 				return session is not null ? Ok(session) : NotFound();
 			}
-		}
+
+			[HttpPost("login")]
+			public async Task<IActionResult> Login([FromBody] LoginUserDto dto)
+			{
+				var result = await _userService.LoginAsync(dto);
+				return Ok(result);
+			}
+	}
 }

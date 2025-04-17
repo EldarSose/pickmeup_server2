@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\pickmeup.api\\PickMeUp.Api.csproj": {}
+    "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\PickMeUp.Api\\PickMeUp.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\pickmeup.api\\PickMeUp.Api.csproj": {
+    "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\PickMeUp.Api\\PickMeUp.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\pickmeup.api\\PickMeUp.Api.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\PickMeUp.Api\\PickMeUp.Api.csproj",
         "projectName": "PickMeUp.Api",
-        "projectPath": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\pickmeup.api\\PickMeUp.Api.csproj",
+        "projectPath": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\PickMeUp.Api\\PickMeUp.Api.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\pickmeup.api\\obj\\",
+        "outputPath": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\PickMeUp.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,6 +46,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[14.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.8, )"

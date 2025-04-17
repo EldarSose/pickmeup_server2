@@ -15,5 +15,6 @@ namespace PickMeUp.User.Service.Interfaces
 		Task<UserAddressDto> AddAddressAsync(CreateUserAddressDto dto); 
 		Task<UserSessionDto> AddSessionAsync(CreateUserSessionDto dto);
 		Task<UserSessionDto?> GetSessionAsync(Guid userId, string deviceId);
+		Task<LoginResponseDto> LoginAsync(LoginUserDto dto);
 	}
 }

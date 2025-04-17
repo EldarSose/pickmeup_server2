@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PickMeUp.User.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72aa7a87006a6a91f8a66d102f53944eefbd5054")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbfe9c8708b540968a9eb183b83c6ca20b8e7e1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("PickMeUp.User.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PickMeUp.User.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

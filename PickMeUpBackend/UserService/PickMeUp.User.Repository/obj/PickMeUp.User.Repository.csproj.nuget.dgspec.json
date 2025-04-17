@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\userservice\\PickMeUp.User.Repository\\PickMeUp.User.Repository.csproj": {}
+    "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\UserService\\PickMeUp.User.Repository\\PickMeUp.User.Repository.csproj": {}
   },
   "projects": {
     "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\PickMeUp.Core\\PickMeUp.Core.csproj": {
@@ -46,6 +46,18 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[14.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.4, )"
@@ -81,14 +93,14 @@
         }
       }
     },
-    "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\userservice\\PickMeUp.User.Repository\\PickMeUp.User.Repository.csproj": {
+    "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\UserService\\PickMeUp.User.Repository\\PickMeUp.User.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\userservice\\PickMeUp.User.Repository\\PickMeUp.User.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\UserService\\PickMeUp.User.Repository\\PickMeUp.User.Repository.csproj",
         "projectName": "PickMeUp.User.Repository",
-        "projectPath": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\userservice\\PickMeUp.User.Repository\\PickMeUp.User.Repository.csproj",
+        "projectPath": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\UserService\\PickMeUp.User.Repository\\PickMeUp.User.Repository.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\userservice\\PickMeUp.User.Repository\\obj\\",
+        "outputPath": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\UserService\\PickMeUp.User.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -127,6 +139,18 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[14.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.4, )"

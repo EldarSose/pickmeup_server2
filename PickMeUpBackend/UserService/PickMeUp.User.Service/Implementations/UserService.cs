@@ -4,6 +4,12 @@ using UserModel = PickMeUp.Core.Models.User.User;
 using PickMeUp.User.Repository.Interfaces;
 using PickMeUp.User.Service.Interfaces;
 using PickMeUp.Core.Models.User;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using PickMeUp.Core.DTOs.Auth;
 
 namespace PickMeUp.User.Service.Implementations
 {
@@ -11,11 +17,13 @@ namespace PickMeUp.User.Service.Implementations
 	{
 		private readonly IUserRepository _repo;
 		private readonly IMapper _mapper;
+		private readonly IConfiguration _configuration;
 
-		public UserService(IUserRepository repo, IMapper mapper)
+		public UserService(IUserRepository repo, IMapper mapper, IConfiguration configuration)
 		{
 			_repo = repo;
 			_mapper = mapper;
+			_configuration = configuration;
 		}
 
 		public async Task<UserDto> RegisterAsync(RegisterUserDto dto)
@@ -56,5 +64,56 @@ namespace PickMeUp.User.Service.Implementations
 			var session = await _repo.GetSessionAsync(userId, deviceId);
 			return session != null ? _mapper.Map<UserSessionDto>(session) : null;
 		}
+
+		public async Task<LoginResponseDto> LoginAsync(LoginUserDto dto)
+		{
+			var user = await _repo.GetByEmailAsync(dto.Email);
+			if (user == null || string.IsNullOrWhiteSpace(dto.Password))
+				throw new UnauthorizedAccessException("Invalid credentials.");
+
+			var decodedPassword = Encoding.UTF8.GetString(Convert.FromBase64String(user.PasswordHash));
+			if (decodedPassword != dto.Password)
+				throw new UnauthorizedAccessException("Invalid credentials.");
+
+			var tokenHandler = new JwtSecurityTokenHandler();
+			var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]!);
+
+			// Placeholder for future roles
+			var userRoles = new List<RoleDto> { new RoleDto { Name = "User" } };
+
+			var claims = new List<Claim>
+				{
+					new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+					new Claim(ClaimTypes.Email, user.Email),
+					new Claim(ClaimTypes.Name, user.FullName),
+					new Claim(ClaimTypes.MobilePhone, user.PhoneNumber)
+				};
+
+			foreach (var role in userRoles)
+				claims.Add(new Claim(ClaimTypes.Role, role.Name));
+
+			var tokenDescriptor = new SecurityTokenDescriptor
+			{
+				Subject = new ClaimsIdentity(claims),
+				Expires = DateTime.UtcNow.AddDays(7),
+				SigningCredentials = new SigningCredentials(
+					new SymmetricSecurityKey(key),
+					SecurityAlgorithms.HmacSha256Signature)
+			};
+
+			var token = tokenHandler.CreateToken(tokenDescriptor);
+
+			return new LoginResponseDto
+			{
+				Token = tokenHandler.WriteToken(token),
+				ExpiresAt = tokenDescriptor.Expires!.Value,
+				FullName = user.FullName,
+				Email = user.Email,
+				PhoneNumber = user.PhoneNumber,
+				Roles = userRoles
+			};
+		}
 	}
+
 }
+

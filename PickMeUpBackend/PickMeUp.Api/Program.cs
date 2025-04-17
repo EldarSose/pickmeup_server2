@@ -1,49 +1,63 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Yarp.ReverseProxy;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Enable Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Configure Reverse Proxy from appsettings.json
 builder.Services.AddReverseProxy()
 	.LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
+// Allow CORS from any origin
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowAll", policy =>
+	{
+		policy.AllowAnyOrigin()
+			  .AllowAnyMethod()
+			  .AllowAnyHeader();
+	});
+});
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+
+app.UseCors("AllowAll");
+
+app.Use(async (context, next) =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+	if (context.Request.Path.StartsWithSegments("/swagger"))
+	{
+		context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+		context.Response.Headers.Add("Access-Control-Allow-Headers", "*");
+		context.Response.Headers.Add("Access-Control-Allow-Methods", "*");
+	}
+	await next();
+});
+
+
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+	options.SwaggerEndpoint("http://pickmeup-user-api:8080/swagger/v1/swagger.json", "PickMeUp.User.API");
+	options.SwaggerEndpoint("http://pickmeup-auth-api:8080/swagger/v1/swagger.json", "PickMeUp.Auth.API");
+	options.SwaggerEndpoint("http://pickmeup-driver-api:8080/swagger/v1/swagger.json", "PickMeUp.Driver.API");
+	options.SwaggerEndpoint("http://pickmeup-ride-api:8080/swagger/v1/swagger.json", "PickMeUp.Ride.API");
+	options.SwaggerEndpoint("http://pickmeup-payment-api:8080/swagger/v1/swagger.json", "PickMeUp.Payment.API");
+	options.SwaggerEndpoint("http://pickmeup-rating-api:8080/swagger/v1/swagger.json", "PickMeUp.Rating.API");
+	options.SwaggerEndpoint("http://pickmeup-notification-api:8080/swagger/v1/swagger.json", "PickMeUp.Notification.API");
+
+	options.RoutePrefix = string.Empty;
+});
+
 
 app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
 
 app.MapReverseProxy();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
