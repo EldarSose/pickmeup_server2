@@ -1,7 +1,6 @@
 version: '3.9'
 
 services:
-  # GATEWAY (Reverse Proxy)
   pickmeup-gateway:
     build:
       context: .
@@ -18,8 +17,9 @@ services:
       - pickmeup-notification-api
     environment:
       - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - backend
 
-  # USER API
   pickmeup-user-api:
     build:
       context: .
@@ -27,11 +27,13 @@ services:
     ports:
       - "5001:8080"
     environment:
-      - Jwt__Secret=9a$R39rJb_#u82z@Ls4!zWpKQh2XpP7h
+      - Jwt__Secret="9a$R39rJb_#u82z@Ls4!zWpKQh2XpP7h99aA1@!bB"
+      - ConnectionStrings__DefaultConnection=Server=db;Database=PickMeUpDb;User Id=sa;Password=QWElkj132!;TrustServerCertificate=True;Encrypt=False
     depends_on:
       - db
+    networks:
+      - backend
 
-  # AUTH API
   pickmeup-auth-api:
     build:
       context: .
@@ -42,8 +44,9 @@ services:
       - db
     environment:
       - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - backend
 
-  # DRIVER API
   pickmeup-driver-api:
     build:
       context: .
@@ -54,8 +57,9 @@ services:
       - db
     environment:
       - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - backend
 
-  # RIDE API
   pickmeup-ride-api:
     build:
       context: .
@@ -66,8 +70,9 @@ services:
       - db
     environment:
       - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - backend
 
-  # PAYMENT API
   pickmeup-payment-api:
     build:
       context: .
@@ -78,8 +83,9 @@ services:
       - db
     environment:
       - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - backend
 
-  # RATING API
   pickmeup-rating-api:
     build:
       context: .
@@ -90,8 +96,9 @@ services:
       - db
     environment:
       - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - backend
 
-  # NOTIFICATION API
   pickmeup-notification-api:
     build:
       context: .
@@ -102,8 +109,9 @@ services:
       - db
     environment:
       - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - backend
 
-  # MSSQL DATABASE
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
@@ -113,6 +121,12 @@ services:
       - "1433:1433"
     volumes:
       - sqlvolume:/var/opt/mssql
+    networks:
+      - backend
 
 volumes:
   sqlvolume:
+
+networks:
+  backend:
+    driver: bridge
