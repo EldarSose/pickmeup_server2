@@ -9,6 +9,7 @@ namespace PickMeUp.Core.DTOs.User
 {
 	public class LoginResponseDto
 	{
+		public Guid Id { get; set; }
 		public string Token { get; set; } = null!;
 		public DateTime ExpiresAt { get; set; }
 		public string FullName { get; set; } = null!;

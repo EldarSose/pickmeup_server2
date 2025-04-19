@@ -10,13 +10,21 @@ namespace PickMeUp.User.Repository.Interfaces
 {
 	public interface IUserRepository
 	{
-		Task<UserModel?> GetByEmailAsync(string email);
 		Task<UserModel> AddAsync(UserModel user);
 		Task<IEnumerable<UserModel>> GetAllAsync();
-		Task<UserAddress> AddAddressAsync(UserAddress address);
+		Task<UserModel?> GetByIdAsync(Guid id);
+		Task<UserModel?> GetByEmailAsync(string email);
+		Task<UserModel> UpdateAsync(UserModel user);
+		Task<bool> DeleteAsync(Guid id);
+
 		Task<IEnumerable<UserAddress>> GetAddressesAsync(Guid userId);
+		Task<UserAddress> AddAddressAsync(UserAddress address);
+
 		Task<UserSession> AddSessionAsync(UserSession session);
 		Task<UserSession?> GetSessionAsync(Guid userId, string deviceId);
-		Task SaveChangesAsync();
+
+		Task<int> SaveChangesAsync();
+		Task RemoveAllAddressesForUserAsync(Guid userId);
+
 	}
 }

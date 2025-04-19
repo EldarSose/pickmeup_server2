@@ -23,7 +23,8 @@ namespace PickMeUp.User.Service.Mappings
 
 			CreateMap<UserSession, UserSessionDto>();
 			CreateMap<CreateUserSessionDto, UserSession>();
-
+			CreateMap<UpdateUserDto, UserModel>()
+	.ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
 		}
 	}
 }

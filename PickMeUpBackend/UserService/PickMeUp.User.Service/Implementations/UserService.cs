@@ -10,6 +10,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using PickMeUp.Core.DTOs.Auth;
+using Microsoft.EntityFrameworkCore;
 
 namespace PickMeUp.User.Service.Implementations
 {
@@ -28,10 +29,16 @@ namespace PickMeUp.User.Service.Implementations
 
 		public async Task<UserDto> RegisterAsync(RegisterUserDto dto)
 		{
+			// Check if email already exists
+			var existing = await _repo.GetByEmailAsync(dto.Email);
+			if (existing != null)
+				throw new InvalidOperationException("A user with this email already exists.");
+
 			var user = _mapper.Map<UserModel>(dto);
 			var addedUser = await _repo.AddAsync(user);
 			return _mapper.Map<UserDto>(addedUser);
 		}
+
 
 		public async Task<IEnumerable<UserDto>> GetAllAsync()
 		{
@@ -47,10 +54,20 @@ namespace PickMeUp.User.Service.Implementations
 
 		public async Task<UserAddressDto> AddAddressAsync(CreateUserAddressDto dto)
 		{
+			// Remove existing address if one exists
+			var existing = await _repo.GetAddressesAsync(dto.UserId);
+			if (existing.Any())
+			{
+				await _repo.RemoveAllAddressesForUserAsync(dto.UserId); // you can also call a repo method if you'd like
+				await _repo.SaveChangesAsync();
+			}
+
+			// Add the new address
 			var address = _mapper.Map<UserAddress>(dto);
 			var result = await _repo.AddAddressAsync(address);
 			return _mapper.Map<UserAddressDto>(result);
 		}
+
 
 		public async Task<UserSessionDto> AddSessionAsync(CreateUserSessionDto dto)
 		{
@@ -105,6 +122,7 @@ namespace PickMeUp.User.Service.Implementations
 
 			return new LoginResponseDto
 			{
+				Id = user.Id,
 				Token = tokenHandler.WriteToken(token),
 				ExpiresAt = tokenDescriptor.Expires!.Value,
 				FullName = user.FullName,
@@ -112,6 +130,32 @@ namespace PickMeUp.User.Service.Implementations
 				PhoneNumber = user.PhoneNumber,
 				Roles = userRoles
 			};
+		}
+		public async Task<UserDto> UpdateAsync(Guid id, UpdateUserDto dto)
+		{
+			var existing = await _repo.GetByIdAsync(id) ?? throw new Exception("Not found.");
+			_mapper.Map(dto, existing);
+			await _repo.UpdateAsync(existing);
+			await _repo.SaveChangesAsync();
+			return _mapper.Map<UserDto>(existing);
+		}
+
+		public async Task<bool> DeleteAsync(Guid id)
+		{
+			var success = await _repo.DeleteAsync(id);
+			if (success)
+				await _repo.SaveChangesAsync();
+			return success;
+		}
+		public async Task<bool> ForgotPasswordAsync(ForgotPasswordDto dto)
+		{
+			var user = await _repo.GetByEmailAsync(dto.Email);
+			if (user == null) return false;
+
+			user.PasswordHash = Convert.ToBase64String(Encoding.UTF8.GetBytes(dto.NewPassword));
+			await _repo.UpdateAsync(user);
+			await _repo.SaveChangesAsync();
+			return true;
 		}
 	}
 
