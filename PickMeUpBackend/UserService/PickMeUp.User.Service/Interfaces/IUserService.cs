@@ -1,5 +1,8 @@
 ﻿using PickMeUp.Core.DTOs.Auth;
 using PickMeUp.Core.DTOs.User;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PickMeUp.User.Service.Interfaces
 {
@@ -9,15 +12,7 @@ namespace PickMeUp.User.Service.Interfaces
 		Task<IEnumerable<UserDto>> GetAllAsync();
 		Task<UserDto> UpdateAsync(Guid id, UpdateUserDto dto);
 		Task<bool> DeleteAsync(Guid id);
-
-		Task<IEnumerable<UserAddressDto>> GetAddressesAsync(Guid userId);
-		Task<UserAddressDto> AddAddressAsync(CreateUserAddressDto dto);
-
-		Task<UserSessionDto> AddSessionAsync(CreateUserSessionDto dto);
-		Task<UserSessionDto?> GetSessionAsync(Guid userId, string deviceId);
-
 		Task<LoginResponseDto> LoginAsync(LoginUserDto dto);
 		Task<bool> ForgotPasswordAsync(ForgotPasswordDto dto);
-
 	}
 }

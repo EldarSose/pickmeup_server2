@@ -16,7 +16,11 @@ namespace PickMeUp.User.Service.Mappings
 		{
 			CreateMap<UserModel, UserDto>();
 			CreateMap<RegisterUserDto, PickMeUp.Core.Models.User.User>()
-				.ForMember(dest => dest.PasswordHash, opt => opt.MapFrom(src => Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(src.Password))));
+	.ForMember(dest => dest.PasswordHash, opt =>
+		opt.MapFrom(src => Convert.ToBase64String(Encoding.UTF8.GetBytes(src.Password))))
+	.ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName))
+	.ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+	.ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber));
 
 			CreateMap<UserAddress, UserAddressDto>();
 			CreateMap<CreateUserAddressDto, UserAddress>();
