@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\UserService\PickMeUp.User.Repository\PickMeUp.User.Repository.csproj" />
     <ProjectReference Include="..\PickMeUp.Auth.Service\PickMeUp.Auth.Service.csproj" />
   </ItemGroup>
 

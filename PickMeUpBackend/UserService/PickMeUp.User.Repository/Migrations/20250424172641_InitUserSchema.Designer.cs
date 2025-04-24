@@ -12,14 +12,15 @@ using PickMeUp.User.Repository;
 namespace PickMeUp.User.Repository.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20250416202218_InitialUserCreate")]
-    partial class InitialUserCreate
+    [Migration("20250424172641_InitUserSchema")]
+    partial class InitUserSchema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("user")
                 .HasAnnotation("ProductVersion", "9.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -53,14 +54,9 @@ namespace PickMeUp.User.Repository.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Users");
+                    b.ToTable("Users", "user");
                 });
 
             modelBuilder.Entity("PickMeUp.Core.Models.User.UserAddress", b =>
@@ -86,7 +82,7 @@ namespace PickMeUp.User.Repository.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", "user");
                 });
 
             modelBuilder.Entity("PickMeUp.Core.Models.User.UserSession", b =>
@@ -113,14 +109,9 @@ namespace PickMeUp.User.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sessions");
-                });
+                    b.HasIndex("UserId");
 
-            modelBuilder.Entity("PickMeUp.Core.Models.User.User", b =>
-                {
-                    b.HasOne("PickMeUp.Core.Models.User.User", null)
-                        .WithMany("Sessions")
-                        .HasForeignKey("UserId");
+                    b.ToTable("Sessions", "user");
                 });
 
             modelBuilder.Entity("PickMeUp.Core.Models.User.UserAddress", b =>
@@ -147,13 +138,22 @@ namespace PickMeUp.User.Repository.Migrations
 
                             b1.HasKey("UserAddressId");
 
-                            b1.ToTable("Addresses");
+                            b1.ToTable("Addresses", "user");
 
                             b1.WithOwner()
                                 .HasForeignKey("UserAddressId");
                         });
 
                     b.Navigation("Location")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PickMeUp.Core.Models.User.UserSession", b =>
+                {
+                    b.HasOne("PickMeUp.Core.Models.User.User", null)
+                        .WithMany("Sessions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

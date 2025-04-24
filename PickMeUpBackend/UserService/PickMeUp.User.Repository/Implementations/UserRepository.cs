@@ -15,7 +15,9 @@ namespace PickMeUp.User.Repository.Implementations
 		public UserRepository(UserDbContext context) => _context = context;
 
 		public async Task<UserModel?> GetByEmailAsync(string email) =>
-			await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+			await _context.Users
+		.Include(u => u.Roles)
+		.FirstOrDefaultAsync(u => u.Email == email);
 
 		public async Task<UserModel?> GetByIdAsync(Guid id) =>
 			await _context.Users.FirstOrDefaultAsync(u => u.Id == id);

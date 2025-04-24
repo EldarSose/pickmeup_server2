@@ -18,3 +18,5 @@ C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\UserService\PickMeUp.User.S
 C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\UserService\PickMeUp.User.Service\obj\Debug\net8.0\PickMeUp.User.Service.pdb
 C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\UserService\PickMeUp.User.Service\obj\Debug\net8.0\PickMeUp.User.Service.genruntimeconfig.cache
 C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\UserService\PickMeUp.User.Service\obj\Debug\net8.0\ref\PickMeUp.User.Service.dll
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\UserService\PickMeUp.User.Service\bin\Debug\net8.0\PickMeUp.Auth.Repository.dll
+C:\Users\PC\Desktop\pickmeup_server2\PickMeUpBackend\UserService\PickMeUp.User.Service\bin\Debug\net8.0\PickMeUp.Auth.Repository.pdb

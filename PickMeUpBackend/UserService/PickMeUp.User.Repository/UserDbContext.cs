@@ -16,5 +16,10 @@ public class UserDbContext : DbContext
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.Entity<UserAddress>().OwnsOne(a => a.Location);
+		modelBuilder.Entity<UserModel>()
+	.HasMany(u => u.Roles)
+	.WithMany()
+	.UsingEntity(j => j.ToTable("UserRoles", "user"));
+		modelBuilder.HasDefaultSchema("user");
 	}
 }

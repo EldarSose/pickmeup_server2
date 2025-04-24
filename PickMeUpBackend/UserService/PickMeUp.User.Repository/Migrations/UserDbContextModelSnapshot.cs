@@ -17,10 +17,62 @@ namespace PickMeUp.User.Repository.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("user")
                 .HasAnnotation("ProductVersion", "9.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("PickMeUp.Core.Models.Auth.Permission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Permission", "user");
+                });
+
+            modelBuilder.Entity("PickMeUp.Core.Models.Auth.Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role", "user");
+                });
 
             modelBuilder.Entity("PickMeUp.Core.Models.User.User", b =>
                 {
@@ -52,7 +104,7 @@ namespace PickMeUp.User.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", "user");
                 });
 
             modelBuilder.Entity("PickMeUp.Core.Models.User.UserAddress", b =>
@@ -78,7 +130,7 @@ namespace PickMeUp.User.Repository.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", "user");
                 });
 
             modelBuilder.Entity("PickMeUp.Core.Models.User.UserSession", b =>
@@ -107,7 +159,29 @@ namespace PickMeUp.User.Repository.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Sessions");
+                    b.ToTable("Sessions", "user");
+                });
+
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.Property<Guid>("RolesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("RolesId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRoles", "user");
+                });
+
+            modelBuilder.Entity("PickMeUp.Core.Models.Auth.Permission", b =>
+                {
+                    b.HasOne("PickMeUp.Core.Models.Auth.Role", null)
+                        .WithMany("Permissions")
+                        .HasForeignKey("RoleId");
                 });
 
             modelBuilder.Entity("PickMeUp.Core.Models.User.UserAddress", b =>
@@ -134,7 +208,7 @@ namespace PickMeUp.User.Repository.Migrations
 
                             b1.HasKey("UserAddressId");
 
-                            b1.ToTable("Addresses");
+                            b1.ToTable("Addresses", "user");
 
                             b1.WithOwner()
                                 .HasForeignKey("UserAddressId");
@@ -151,6 +225,26 @@ namespace PickMeUp.User.Repository.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.HasOne("PickMeUp.Core.Models.Auth.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PickMeUp.Core.Models.User.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PickMeUp.Core.Models.Auth.Role", b =>
+                {
+                    b.Navigation("Permissions");
                 });
 
             modelBuilder.Entity("PickMeUp.Core.Models.User.User", b =>

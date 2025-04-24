@@ -30,6 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PickMeUp.User.Service\PickMeUp.User.Service.csproj" />
     <ProjectReference Include="..\PickMeUp.User.Repository\PickMeUp.User.Repository.csproj" />
+	  <ProjectReference Include="..\..\AuthService\PickMeUp.Auth.Repository\PickMeUp.Auth.Repository.csproj" />
   </ItemGroup>
 
 </Project>

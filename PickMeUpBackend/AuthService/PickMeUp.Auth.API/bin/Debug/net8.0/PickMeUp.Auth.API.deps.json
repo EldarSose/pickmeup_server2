@@ -16,6 +16,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.21.0",
           "PickMeUp.Auth.Service": "1.0.0",
+          "PickMeUp.User.Repository": "1.0.0",
           "Swashbuckle.AspNetCore": "8.1.1"
         },
         "runtime": {
@@ -1146,6 +1147,22 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "PickMeUp.User.Repository/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "14.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.4",
+          "Microsoft.AspNetCore.OpenApi": "8.0.8",
+          "Microsoft.EntityFrameworkCore": "9.0.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
+          "PickMeUp.Core": "1.0.0"
+        },
+        "runtime": {
+          "PickMeUp.User.Repository.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -1747,6 +1764,11 @@
       "sha512": ""
     },
     "PickMeUp.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PickMeUp.User.Repository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

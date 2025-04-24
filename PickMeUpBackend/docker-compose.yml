@@ -43,7 +43,8 @@ services:
     depends_on:
       - db
     environment:
-      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Secret="9a$R39rJb_#u82z@Ls4!zWpKQh2XpP7h99aA1@!bB"
+      - ConnectionStrings__DefaultConnection=Server=db;Database=PickMeUpDb;User Id=sa;Password=QWElkj132!;TrustServerCertificate=True;Encrypt=False
     networks:
       - backend
 
@@ -56,7 +57,8 @@ services:
     depends_on:
       - db
     environment:
-      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Secret="9a$R39rJb_#u82z@Ls4!zWpKQh2XpP7h99aA1@!bB"
+      - ConnectionStrings__DefaultConnection=Server=db;Database=PickMeUpDb;User Id=sa;Password=QWElkj132!;TrustServerCertificate=True;Encrypt=False
     networks:
       - backend
 
@@ -69,7 +71,8 @@ services:
     depends_on:
       - db
     environment:
-      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Secret="9a$R39rJb_#u82z@Ls4!zWpKQh2XpP7h99aA1@!bB"
+      - ConnectionStrings__DefaultConnection=Server=db;Database=PickMeUpDb;User Id=sa;Password=QWElkj132!;TrustServerCertificate=True;Encrypt=False
     networks:
       - backend
 
@@ -82,7 +85,8 @@ services:
     depends_on:
       - db
     environment:
-      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Secret="9a$R39rJb_#u82z@Ls4!zWpKQh2XpP7h99aA1@!bB"
+      - ConnectionStrings__DefaultConnection=Server=db;Database=PickMeUpDb;User Id=sa;Password=QWElkj132!;TrustServerCertificate=True;Encrypt=False
     networks:
       - backend
 
@@ -95,7 +99,8 @@ services:
     depends_on:
       - db
     environment:
-      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Secret="9a$R39rJb_#u82z@Ls4!zWpKQh2XpP7h99aA1@!bB"
+      - ConnectionStrings__DefaultConnection=Server=db;Database=PickMeUpDb;User Id=sa;Password=QWElkj132!;TrustServerCertificate=True;Encrypt=False
     networks:
       - backend
 
@@ -108,7 +113,8 @@ services:
     depends_on:
       - db
     environment:
-      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Secret="9a$R39rJb_#u82z@Ls4!zWpKQh2XpP7h99aA1@!bB"
+      - ConnectionStrings__DefaultConnection=Server=db;Database=PickMeUpDb;User Id=sa;Password=QWElkj132!;TrustServerCertificate=True;Encrypt=False
     networks:
       - backend
 

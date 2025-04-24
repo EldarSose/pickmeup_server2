@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PickMeUp.Auth.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2100cfa21c1a2e1090dd2f80d59d9aac633f999")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+391567caa51b01945475f1c310b0f60ef73de44b")]
 [assembly: System.Reflection.AssemblyProductAttribute("PickMeUp.Auth.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PickMeUp.Auth.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

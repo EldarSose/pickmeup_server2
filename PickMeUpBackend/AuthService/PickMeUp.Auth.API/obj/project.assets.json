@@ -1743,6 +1743,24 @@
         "runtime": {
           "bin/placeholder/PickMeUp.Core.dll": {}
         }
+      },
+      "PickMeUp.User.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "AutoMapper": "14.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.4",
+          "Microsoft.AspNetCore.OpenApi": "8.0.8",
+          "Microsoft.EntityFrameworkCore": "9.0.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
+          "PickMeUp.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PickMeUp.User.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PickMeUp.User.Repository.dll": {}
+        }
       }
     }
   },
@@ -5034,6 +5052,11 @@
       "type": "project",
       "path": "../../PickMeUp.Core/PickMeUp.Core.csproj",
       "msbuildProject": "../../PickMeUp.Core/PickMeUp.Core.csproj"
+    },
+    "PickMeUp.User.Repository/1.0.0": {
+      "type": "project",
+      "path": "../../UserService/PickMeUp.User.Repository/PickMeUp.User.Repository.csproj",
+      "msbuildProject": "../../UserService/PickMeUp.User.Repository/PickMeUp.User.Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5046,6 +5069,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.4",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.21.0",
       "PickMeUp.Auth.Service >= 1.0.0",
+      "PickMeUp.User.Repository >= 1.0.0",
       "Swashbuckle.AspNetCore >= 8.1.1"
     ]
   },
@@ -5079,6 +5103,9 @@
           "projectReferences": {
             "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\AuthService\\PickMeUp.Auth.Service\\PickMeUp.Auth.Service.csproj": {
               "projectPath": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\AuthService\\PickMeUp.Auth.Service\\PickMeUp.Auth.Service.csproj"
+            },
+            "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\UserService\\PickMeUp.User.Repository\\PickMeUp.User.Repository.csproj": {
+              "projectPath": "C:\\Users\\PC\\Desktop\\pickmeup_server2\\PickMeUpBackend\\UserService\\PickMeUp.User.Repository\\PickMeUp.User.Repository.csproj"
             }
           }
         }

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace PickMeUp.Core.DTOs.Auth
 {
-	public class LoginDto
+	public class RoleWithPermissionsDto : RoleDto
 	{
-		public string Email { get; set; } = null!;
-		public string Password { get; set; } = null!;
+		public List<Guid>? PermissionIds { get; set; }
 	}
 }

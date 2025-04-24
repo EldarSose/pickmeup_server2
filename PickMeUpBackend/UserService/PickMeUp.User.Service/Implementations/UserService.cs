@@ -3,13 +3,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using PickMeUp.Core.DTOs.Auth;
 using PickMeUp.Core.DTOs.User;
-using PickMeUp.Core.Models.User;
 using PickMeUp.User.Repository.Interfaces;
 using PickMeUp.User.Service.Interfaces;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using PickMeUp.Auth.Repository;
 using UserModel = PickMeUp.Core.Models.User.User;
+using PickMeUp.Core.Models.Auth;
+using Microsoft.EntityFrameworkCore;
 
 namespace PickMeUp.User.Service.Implementations
 {
@@ -18,12 +20,14 @@ namespace PickMeUp.User.Service.Implementations
 		private readonly IUserRepository _repo;
 		private readonly IMapper _mapper;
 		private readonly IConfiguration _configuration;
+		private readonly AuthDbContext _authContext;
 
-		public UserService(IUserRepository repo, IMapper mapper, IConfiguration configuration)
+		public UserService(IUserRepository repo, IMapper mapper, IConfiguration configuration, AuthDbContext authContext)
 		{
 			_repo = repo;
 			_mapper = mapper;
 			_configuration = configuration;
+			_authContext = authContext;
 		}
 
 		public async Task<UserDto> RegisterAsync(RegisterUserDto dto)
@@ -33,6 +37,11 @@ namespace PickMeUp.User.Service.Implementations
 				throw new InvalidOperationException("A user with this email already exists.");
 
 			var user = _mapper.Map<UserModel>(dto);
+			var basicRole = await _authContext.Roles.FirstOrDefaultAsync(r => r.Name == "User");
+			if (basicRole != null)
+			{
+				user.Roles = new List<Role> { basicRole };
+			}
 			var addedUser = await _repo.AddAsync(user);
 			return _mapper.Map<UserDto>(addedUser);
 		}
@@ -81,7 +90,7 @@ namespace PickMeUp.User.Service.Implementations
 			var tokenHandler = new JwtSecurityTokenHandler();
 			var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]!);
 
-			var userRoles = new List<RoleDto> { new RoleDto { Name = "User" } };
+			var userRoles = user.Roles?.Select(r => new RoleDto { Name = r.Name }).ToList() ?? new();
 
 			var claims = new List<Claim>
 			{
